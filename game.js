@@ -97,8 +97,24 @@ function dragOver(event) {
 function drop(event) {
     event.preventDefault();
     const data = event.dataTransfer.getData('text');
-    event.target.textContent = data;
-    event.target.classList.add('filled');
+    
+    // Clear the droppable element if it's empty
+    if (!event.target.textContent) {
+        event.target.textContent = data;
+        event.target.classList.add('filled');
+        
+        // Remove the dragged letter from the jumbled-word container
+        const jumbledWordContainer = document.getElementById('jumbled-word');
+        const letterElements = jumbledWordContainer.querySelectorAll('.letter');
+        let removed = false;
+        letterElements.forEach(element => {
+            if (!removed && element.textContent === data) {
+                jumbledWordContainer.removeChild(element);
+                removed = true;
+            }
+        });
+    }
+    
     checkAllPlacesFilled();
 }
 
