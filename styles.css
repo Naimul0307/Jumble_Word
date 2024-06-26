@@ -1,30 +1,69 @@
 /* Add your custom styles here */
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ensures the container takes full viewport height */
+    position: relative; /* Position relative to enable absolute positioning of timer */
+}
+
 .word-container {
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 10px;
 }
 
+
+#timer {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+    border-radius: 80%; /* Creates a round shape */
+    font-size: 24px; /* Adjust font size */
+    font-weight: bold; /* Make text bold */
+}
+
 .letter {
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 5px;
+    background-color: #00c0e2dc;
+    border: 5px dashed #790636ab;
+    min-width: 150px; /* Increased minimum width */
+    min-height: 150px; /* Increased minimum height */
+    padding: 40px;
+    margin: 30px;
     cursor: pointer;
+    font-size: 60px;
+    font-weight: 400;
+    text-align: center;
 }
 
 .droppable {
     border: 2px dashed #007bff;
-    padding: 20px;
-    margin: 10px;
-    min-width: 40px;
-    min-height: 40px;
+    padding: 40px; /* Increased padding for droppable areas */
+    margin: 30px;
+    min-width: 150px; /* Increased minimum width */
+    min-height: 150px; /* Increased minimum height */
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 60px; /* Larger font size */
+    font-weight: 400;
+    text-align: center;
 }
 
 .filled {
     background-color: #007bff;
     color: white;
+}
+
+#result{
+    align-items: center;
+    font-size: 30px;
+    background-color: #b913cfdc;
+    border: 5px dashed #046304ab;
+    font-weight: 100;
+    text-align: center;
 }
