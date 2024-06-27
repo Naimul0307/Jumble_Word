@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            /* Set background image properties */
+            background-image: url('words_game/guest data-Photoroom.png'); /* Replace with your image path */
+            background-size: cover; /* Cover the entire viewport */
+            background-position: center; /* Center the background image */
+            background-repeat: no-repeat; /* No repeat */
+            min-height: 100vh; /* Ensure minimum height of viewport */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
+
+        h1 {
+            font-size: 60px; /* Increase label text size */
+            margin-top: 100px;
+            color: white; /* Change label text color */
+            text-shadow: 8px 8px 12px rgba(0, 0, 0, 0.8); /* Add text shadow */
+        }
+
+        label {
+            font-size: 60px; /* Increase label text size */
+            color: white; /* Change label text color */
+            text-shadow: 8px 8px 12px rgba(0, 0, 0, 0.8); /* Add text shadow */
+        }
+
+        input.form-control {
+            font-size: 30px; /* Increase input text size */
+            padding: 10px; /* Increase input padding */
+            height: auto; /* Adjust height to fit content */
+            width: 600px;
+            background-color: royalblue; /* Change input background color */
+            box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.8); /* Add input box shadow */
+            color: white; /* Change input text color to white */
+        }
+
+        button {
+            font-size: 30px !important; /* Increase button text size */
+            padding: 15px 30px !important; /* Increase button size */
+            background-color: royalblue !important; /* Change button background color */
+            width: 600px !important;
+            border: none; /* Remove border */
+            margin-top: 10px;
+            border-radius: 5px !important; /* Add rounded corners */
+            color: white !important; /* Change button text color */
+            box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.8); /* Add button box shadow */
+        }
+
+        button:hover {
+            background-color: #dedee7 !important; /* Change button background color on hover */
+            color: black !important; /* Change button text color on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12">
+                <div class="rounded">
+                    <header class="text-left mb-6">
+                        <h1>Enter Your Information</h1>
+                    </header>
+                    <main>
+                        <form id="user-form">
+                            <div class="form-group">
+                                <label for="username">Name:</label>
+                                <input type="text" id="username" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="mobile">Mobile:</label>
+                                <input type="text" id="mobile" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email ID:</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+                            <button type="submit" class="btn custom-btn">Submit</button>
+                        </form>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('user-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            window.location.href = 'game.html'; // Redirects to game.html upon form submission
+        });
+    </script>
+</body>
+</html>

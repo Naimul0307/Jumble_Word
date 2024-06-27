@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Unscramble the Word Game</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container-fluid p-0">
+        <div class="position-relative vh-100">
+            <img src="words_game\welcome.jpg" alt="Start Game" id="start-image" class="img-fluid w-100 h-100 position-absolute" style="object-fit: cover; cursor: pointer;">
+        </div>
+    </div>
+    <script>
+        document.getElementById('start-image').addEventListener('click', () => {
+            window.location.href = 'form.html';
+        });
+    </script>
+</body>
+</html>

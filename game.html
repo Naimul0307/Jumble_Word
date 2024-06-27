@@ -9,16 +9,13 @@
 </head>
 <body>
     <div class="container">
-        <header class="text-center">
-            <h1>Unscramble the Word!</h1>
-            <p>Can you unscramble the word correctly?</p>
-        </header>
         <main id="game-container">
-            <div id="jumbled-word" class="word-container"></div>
+            <div id="question" class="word-container">Question</div>
             <div id="droppable-word" class="word-container droppable-word"></div>
-            <div id="timer" class="text-center">Time left: </div>
+            <div id="jumbled-letters" class="word-container jumbled-letters"></div>
             <div id="result" class="text-center"></div>
         </main>
+        <div id="timer" class="text-center"></div>
     </div>
     <script src="game.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

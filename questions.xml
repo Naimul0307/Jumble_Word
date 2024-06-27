@@ -1,0 +1,18 @@
+<questions>
+    <question>
+        <text>What is the capital of France?</text>
+        <answer>Paris</answer>
+    </question>
+    <question>
+        <text>What is PHP framework?</text>
+        <answer>LARAVEL</answer>
+    </question>
+    <question>
+        <text>Which language easy to learn?</text>
+        <answer>PYTHON</answer>
+    </question>
+    <question>
+        <text>What is High Level Language?</text>
+        <answer>JAVA</answer>
+    </question>
+</questions>

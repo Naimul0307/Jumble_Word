@@ -1,11 +1,38 @@
-/* Add your custom styles here */
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    background-image: url('words_game/guest data-Photoroom.png'); /* Replace with your image path */
+    background-size: cover; /* Ensures the image covers the whole page */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+}
+
+.vh-100 {
+    height: 100vh;
+}
 
 .container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start; /* Align items to the left */
+    margin-top: 200px;
+    margin-left: 30px;
     align-items: center;
-    height: 100vh; /* Ensures the container takes full viewport height */
-    position: relative; /* Position relative to enable absolute positioning of timer */
+    position: relative;
+    padding-left: 20px; /* Optional: Add padding to the left */
+}
+
+.droppable-word {
+    background-color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: auto;
+    width: 800px; /* Adjust width as needed */
+    border: 5px dashed #350217ab;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px; /* Add padding to increase the container size */
 }
 
 .word-container {
@@ -14,42 +41,58 @@
     margin-bottom: 10px;
 }
 
-
-#timer {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background-color: #007bff;
+#question {
+    position: relative;
+    font-size: 30px;
+    font-weight: 400;
     color: white;
-    padding: 20px;
-    border-radius: 80%; /* Creates a round shape */
-    font-size: 24px; /* Adjust font size */
-    font-weight: bold; /* Make text bold */
 }
 
-.letter {
-    background-color: #00c0e2dc;
-    border: 5px dashed #790636ab;
-    min-width: 150px; /* Increased minimum width */
-    min-height: 150px; /* Increased minimum height */
-    padding: 40px;
-    margin: 30px;
-    cursor: pointer;
-    font-size: 60px;
-    font-weight: 400;
+#timer {
+    position: fixed; /* Change from absolute to fixed */
+    top: 20px;
+    left: 20px;
+    background-color: #a6ccf5;
+    color: white;
+    padding: 20px;
+    border-radius: 50%; /* Use a circular border */
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    border: 5px dashed #22010fab;
+    z-index: 10; /* Ensure it's above other elements */
+}
+
+.letter-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px dashed #350217ab;
+    padding: 20px;
+    margin: 20px;
+    min-width: 100px;
+    min-height: 100px;
+    background-color: hsla(263, 24%, 81%, 0.993);
+    font-size: 40px;
+    font-weight: bold;
     text-align: center;
+    cursor: pointer;
 }
 
 .droppable {
     border: 2px dashed #007bff;
-    padding: 40px; /* Increased padding for droppable areas */
-    margin: 30px;
-    min-width: 150px; /* Increased minimum width */
-    min-height: 150px; /* Increased minimum height */
+    padding: 20px;
+    margin: 40px;
+    min-width: 100px;
+    min-height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 60px; /* Larger font size */
+    font-size: 40px;
     font-weight: 400;
     text-align: center;
 }
@@ -59,11 +102,13 @@
     color: white;
 }
 
-#result{
-    align-items: center;
-    font-size: 30px;
-    background-color: #b913cfdc;
-    border: 5px dashed #046304ab;
-    font-weight: 100;
-    text-align: center;
+.result-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.row {
+    margin-left: -100px;
 }
