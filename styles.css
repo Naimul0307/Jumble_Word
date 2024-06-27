@@ -43,8 +43,8 @@ html, body {
 
 #question {
     position: relative;
-    font-size: 30px;
-    font-weight: 400;
+    font-size: 40px;
+    font-weight: bolder;
     color: white;
 }
 
@@ -52,7 +52,7 @@ html, body {
     position: fixed; /* Change from absolute to fixed */
     top: 20px;
     left: 20px;
-    background-color: #a6ccf5;
+    background-color: rgba(75,99,171,255);
     color: white;
     padding: 20px;
     border-radius: 50%; /* Use a circular border */
@@ -71,12 +71,15 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 5px dashed #350217ab;
+    border: 5px solid #350217ab;
+    border-radius: 20%;
     padding: 20px;
     margin: 20px;
     min-width: 100px;
     min-height: 100px;
-    background-color: hsla(263, 24%, 81%, 0.993);
+    background-color: rgba(75,99,171,255);
+    color: white; /* Font color */
+    font-family: 'Arial', sans-serif; /* Font style */
     font-size: 40px;
     font-weight: bold;
     text-align: center;
@@ -84,7 +87,7 @@ html, body {
 }
 
 .droppable {
-    border: 2px dashed #007bff;
+    border: 4px dashed #007bff;
     padding: 20px;
     margin: 40px;
     min-width: 100px;
