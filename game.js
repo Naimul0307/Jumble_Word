@@ -150,51 +150,26 @@ function checkAllPlacesFilled() {
     clearInterval(timerInterval);
     checkResult(false);
 }
+
 // Function to check the result
 function checkResult(timeUp) {
     const userAnswer = Array.from(document.querySelectorAll('.droppable')).map(element => element.textContent.toLowerCase()).join('');
 
-    // Hide question, droppable word, and jumbled letters containers
-    document.getElementById('question').style.display = 'none';
-    document.getElementById('droppable-word').style.display = 'none';
-    document.getElementById('jumbled-letters').style.display = 'none';
-    document.getElementById('timer').style.display = 'none';
-
-    // Show result message container
-    const resultContainer = document.getElementById('result');
-    resultContainer.style.display = 'block';
-    resultContainer.innerHTML = ''; // Clear previous content
+    let result = '';
 
     if (!timeUp && userAnswer === currentQuestion.answer.toLowerCase()) {
-        // Correct answer: Display success image
-        const img = document.createElement('img');
-        img.src = 'words_game/winner.jpg'; // Replace with your correct image path
-        img.alt = 'Correct!';
-        resultContainer.appendChild(img);
-        resultContainer.classList.add('result-image');
+        result = 'correct';
     } else if (timeUp) {
-        // Time's up: Display time up image
-        const img = document.createElement('img');
-        img.src = 'words_game/loser.jpg'; // Replace with your time up image path
-        img.alt = 'Time\'s up!';
-        resultContainer.appendChild(img);
-        resultContainer.classList.add('result-image');
+        result = 'timeup';
     } else {
-        // Wrong answer: Display wrong answer image
-        const img = document.createElement('img');
-        img.src = 'words_game/loser 2.jpg'; // Replace with your wrong image path
-        img.alt = 'Wrong answer.';
-        resultContainer.appendChild(img);
-        resultContainer.classList.add('result-image');
+        result = 'wrong';
     }
 
-    // Center the result message
-    resultContainer.classList.add('text-center');
+    // Store the result in localStorage
+    localStorage.setItem('gameResult', result);
 
-    // Redirect to index.html after 3 seconds
-       setTimeout(() => {
-        window.location.href = 'index.html'; // Adjust the path as necessary
-    }, 10000); // 3000 milliseconds = 3 seconds
+    // Redirect to the result page
+    window.location.href = 'result.html';
 }
 
 // Function to end the game
@@ -202,7 +177,6 @@ function endGame() {
     document.getElementById('question').textContent = 'Game over!';
     checkResult(true); // Trigger result check when game ends due to no more questions
 }
-
 
 // Load questions from XML and start the game with a random question
 loadQuestionsFromXML('questions.xml');

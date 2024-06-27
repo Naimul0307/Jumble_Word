@@ -16,46 +16,65 @@
             margin: 0; /* Remove default margin */
             padding: 0; /* Remove default padding */
         }
-
-        h1 {
-            font-size: 60px; /* Increase label text size */
-            margin-top: 100px;
-            color: white; /* Change label text color */
-            text-shadow: 8px 8px 12px rgba(0, 0, 0, 0.8); /* Add text shadow */
+        .container{
+            margin-top: 40px;
+            margin-left: 100px;
         }
+
+        h1, label {
+    font-size: 60px; /* Increase text size */
+    color: white; /* Change text color */
+    font-family: 'Arial', sans-serif; /* Change font family */
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8); /* Add text shadow */
+}
 
         label {
             font-size: 60px; /* Increase label text size */
             color: white; /* Change label text color */
+            font-family: 'Arial', sans-serif; /* Change font family */
             text-shadow: 8px 8px 12px rgba(0, 0, 0, 0.8); /* Add text shadow */
         }
 
-        input.form-control {
-            font-size: 30px; /* Increase input text size */
-            padding: 10px; /* Increase input padding */
-            height: auto; /* Adjust height to fit content */
-            width: 600px;
-            background-color: rgba(75,99,171,255); /* Change input background color */
-            box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.8); /* Add input box shadow */
-            color: white; /* Change input text color to white */
-        }
+    input.form-control {
+    font-size: 30px; /* Increase input text size */
+    padding: 15px; /* Increase input padding */
+    height: auto; /* Adjust height to fit content */
+    width: 600px;
+    background-color: rgba(75, 99, 171, 0.8); /* Semi-transparent background color */
+    border: none; /* Remove default border */
+    border-radius: 20px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+    color: white; /* Change input text color to white */
+    outline: none; /* Remove outline on focus */
+}
 
-        button {
-            font-size: 30px !important; /* Increase button text size */
-            padding: 15px 30px !important; /* Increase button size */
-            background-color: royalblue !important; /* Change button background color */
-            width: 600px !important;
-            border: none; /* Remove border */
-            margin-top: 10px;
-            border-radius: 5px !important; /* Add rounded corners */
-            color: white !important; /* Change button text color */
-            box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.8); /* Add button box shadow */
-        }
+input.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.6); /* Placeholder text color */
+}
 
-        button:hover {
-            background-color: #dedee7 !important; /* Change button background color on hover */
-            color: black !important; /* Change button text color on hover */
-        }
+input.form-control:focus {
+    background-color: rgb(247, 247, 247); /* Darker background color on focus */
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.3); /* Increase shadow on focus */
+}
+
+button {
+    font-size: 30px !important; /* Increase button text size */
+    padding: 15px 30px !important; /* Increase button size */
+    background-color: rgba(75, 99, 171, 0.8) !important; /* Semi-transparent background color */
+    width: 600px !important;
+    border: none; /* Remove border */
+    margin-top: 10px;
+    border-radius: 20px !important; /* Rounded corners */
+    color: white !important; /* Change button text color */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+    cursor: pointer; /* Add pointer cursor */
+}
+
+button:hover {
+    background-color: rgba(75, 99, 171, 1) !important; /* Darker background color on hover */
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.3); /* Increase shadow on hover */
+}
+
     </style>
 </head>
 <body>

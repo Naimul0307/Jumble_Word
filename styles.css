@@ -27,7 +27,7 @@ html, body {
     margin-top: 10px;
     margin-bottom: 10px;
     height: auto;
-    width: 800px; /* Adjust width as needed */
+    width: auto; /* Adjust width as needed */
     border: 5px dashed #350217ab;
     display: flex;
     align-items: center;
@@ -37,7 +37,6 @@ html, body {
 
 .word-container {
     display: flex;
-    flex-wrap: wrap;
     margin-bottom: 10px;
 }
 
