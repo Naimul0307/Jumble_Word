@@ -179,4 +179,4 @@ function endGame() {
 }
 
 // Load questions from XML and start the game with a random question
-loadQuestionsFromXML('questions.xml');
+loadQuestionsFromXML('xml/questions.xml');

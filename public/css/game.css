@@ -2,7 +2,7 @@ html, body {
     height: 100%;
     width: 100%;
     margin: 0;
-    background-image: url('words_game/guest data-Photoroom.png'); /* Replace with your image path */
+    background-image: url('../background/guest-data-Photoroom.png'); /* Replace with your image path */
     background-size: cover; /* Ensures the image covers the whole page */
     background-position: center; /* Centers the image */
     background-repeat: no-repeat; /* Prevents the image from repeating */
