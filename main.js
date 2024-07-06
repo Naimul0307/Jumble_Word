@@ -2,12 +2,16 @@ const { app, BrowserWindow } = require('electron');
 const path = require('path');
 
 function createWindow() {
-    const mainWindow = new BrowserWindow({
-        width: 800,
-        height: 600,
-        webPreferences: {
-            preload: path.join(__dirname, 'preload.js')
-        }
+    mainWindow = new BrowserWindow({
+      width: 800,
+      height: 600,
+      fullscreen: true, // Start in full-screen mode
+      autoHideMenuBar: true, // Hide the menu bar
+      icon: path.join(__dirname, 'icon.ico'), // Add this line for the i
+      webPreferences: {
+        nodeIntegration: true,
+        contextIsolation: false,
+      }
     });
 
     mainWindow.loadFile('public/index.html');
