@@ -1,68 +1,74 @@
-body {
-    /* Set background image properties */
-    background-image: url('../background/guest-data-Photoroom.png'); /* Replace with your image path */
-    background-size: cover; /* Cover the entire viewport */
-    background-position: center; /* Center the background image */
-    background-repeat: no-repeat; /* No repeat */
-    min-height: 100vh; /* Ensure minimum height of viewport */
-    margin: 0; /* Remove default margin */
-    padding: 0; /* Remove default padding */
+/* Global styles */
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    background-image: url('../background/guest-data-Photoroom.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.container{
+
+/* Container styling */
+.container {
     margin-top: 40px;
     margin-left: 100px;
 }
 
+/* Heading and label styling */
 h1, label {
-font-size: 60px; /* Increase text size */
-color: white; /* Change text color */
-font-family: 'Arial', sans-serif; /* Change font family */
-text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8); /* Add text shadow */
+    font-size: 60px;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8);
 }
 
 label {
-    font-size: 60px; /* Increase label text size */
-    color: white; /* Change label text color */
-    font-family: 'Arial', sans-serif; /* Change font family */
-    text-shadow: 8px 8px 12px rgba(0, 0, 0, 0.8); /* Add text shadow */
+    font-size: 60px;
+    text-shadow: 8px 8px 12px rgba(0, 0, 0, 0.8);
 }
 
+/* Input field styling */
 input.form-control {
-font-size: 30px; /* Increase input text size */
-padding: 15px; /* Increase input padding */
-height: auto; /* Adjust height to fit content */
-width: 600px;
-background-color: rgba(75, 99, 171, 0.8); /* Semi-transparent background color */
-border: none; /* Remove default border */
-border-radius: 20px; /* Rounded corners */
-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
-color: white; /* Change input text color to white */
-outline: none; /* Remove outline on focus */
+    font-size: 30px;
+    padding: 15px;
+    height: auto;
+    width: 600px;
+    background-color: rgba(75, 99, 171, 0.8);
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: white;
+    outline: none;
 }
 
 input.form-control::placeholder {
-color: rgba(255, 255, 255, 0.6); /* Placeholder text color */
+    color: rgba(255, 255, 255, 0.6);
 }
 
 input.form-control:focus {
-background-color: rgb(247, 247, 247); /* Darker background color on focus */
-box-shadow: 0 0 12px rgba(0, 0, 0, 0.3); /* Increase shadow on focus */
+    background-color: rgb(247, 247, 247);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
 }
 
+/* Button styling */
 button {
-font-size: 30px !important; /* Increase button text size */
-padding: 15px 30px !important; /* Increase button size */
-background-color: rgba(75, 99, 171, 0.8) !important; /* Semi-transparent background color */
-width: 600px !important;
-border: none; /* Remove border */
-margin-top: 10px;
-border-radius: 20px !important; /* Rounded corners */
-color: white !important; /* Change button text color */
-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
-cursor: pointer; /* Add pointer cursor */
+    font-size: 30px !important;
+    padding: 15px 30px !important;
+    background-color: rgba(75, 99, 171, 0.8) !important;
+    width: 600px !important;
+    border: none;
+    margin-top: 10px;
+    border-radius: 20px !important;
+    color: white !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 
 button:hover {
-background-color: rgba(75, 99, 171, 1) !important; /* Darker background color on hover */
-box-shadow: 0 0 12px rgba(0, 0, 0, 0.3); /* Increase shadow on hover */
+    background-color: rgba(75, 99, 171, 1) !important;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
 }

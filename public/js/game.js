@@ -3,6 +3,7 @@ let questions = [];
 let currentQuestion = {};
 let timerDuration = 30; // Time in seconds
 let timerInterval;
+let touchElement = null; // Track the currently touched element
 
 // Function to load questions from XML file and start the game with a random question
 function loadQuestionsFromXML(filePath) {
@@ -97,7 +98,7 @@ function displayDroppablePlaces(length) {
         droppableElement.addEventListener('drop', drop);
 
         // Touch events for dropping
-        droppableElement.addEventListener('touchend', drop);
+        droppableElement.addEventListener('touchend', touchEnd);
 
         droppableWordContainer.appendChild(droppableElement);
     }
@@ -129,14 +130,12 @@ function dragOver(event) {
 
 function drop(event) {
     event.preventDefault();
-    const data = event.dataTransfer ? event.dataTransfer.getData('text') : event.target.textContent;
+    const data = event.dataTransfer.getData('text');
     
-    // Check if the droppable area already contains a letter
-    if (event.target.textContent.trim() !== '') {
-        return; // If it contains a letter, do nothing
-    }
-    
-    // Clear the droppable element
+    // Clear the droppable element before adding the new content
+    event.target.textContent = '';
+
+    // Add the dragged content
     event.target.textContent = data;
     event.target.classList.add('filled');
     
@@ -153,8 +152,6 @@ function drop(event) {
 }
 
 // Touch functions
-let touchElement;
-
 function touchStart(event) {
     event.preventDefault();
     touchElement = event.target;
@@ -163,13 +160,18 @@ function touchStart(event) {
 function touchMove(event) {
     event.preventDefault();
     const touch = event.touches[0];
-    touchElement.style.position = 'absolute';
-    touchElement.style.left = `${touch.pageX - touchElement.offsetWidth / 2}px`;
-    touchElement.style.top = `${touch.pageY - touchElement.offsetHeight / 2}px`;
+    
+    if (touchElement) {
+        touchElement.style.position = 'absolute';
+        touchElement.style.left = `${touch.pageX - touchElement.offsetWidth / 2}px`;
+        touchElement.style.top = `${touch.pageY - touchElement.offsetHeight / 2}px`;
+    }
 }
 
 function touchEnd(event) {
     event.preventDefault();
+    if (!touchElement) return;
+    
     const dropTarget = document.elementFromPoint(event.changedTouches[0].clientX, event.changedTouches[0].clientY);
     if (dropTarget.classList.contains('droppable') && dropTarget.textContent.trim() === '') {
         dropTarget.textContent = touchElement.textContent;
@@ -181,6 +183,8 @@ function touchEnd(event) {
         touchElement.style.left = '';
         touchElement.style.top = '';
     }
+    
+    touchElement = null;
 }
 
 // Function to check if all places are filled

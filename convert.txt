@@ -1,4 +1,7 @@
 To convert your web project into a desktop application, especially if it's built using HTML, CSS, and JavaScript, you can use Electron. Electron allows you to wrap your web application into a native desktop application that can run on Windows, macOS, and Linux.
+
+0. npm init -y to creat package.json
+
 1.Install Electron:
 npm install -g electron
 2.main.js

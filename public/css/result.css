@@ -1,20 +1,22 @@
+/* Reset default styles for body and html */
 body, html {
     height: 100%;
     width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent scrolling */
+    background-color: #f8f9fa; /* Fallback background color */
 }
 
+/* Container for the result image */
 .result-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
     width: 100%;
-    background-color: #f8f9fa;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     overflow: hidden; /* Ensure the image does not overflow */
-}
-
-.result-image {
-    min-width: 100%;
-    min-height: 100%;
-    object-fit: cover; /* Ensure the image covers the entire container */
 }
