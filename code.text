@@ -1,0 +1,72 @@
+// Touch functions
+// function touchStart(event) {
+//     event.preventDefault();
+//     touchElement = event.target;
+// }
+
+// function touchMove(event) {
+//     event.preventDefault();
+//     const touch = event.touches[0];
+    
+//     if (touchElement) {
+//         touchElement.style.position = 'absolute';
+//         touchElement.style.left = `${touch.pageX - touchElement.offsetWidth / 2}px`;
+//         touchElement.style.top = `${touch.pageY - touchElement.offsetHeight / 2}px`;
+//     }
+// }
+
+// function touchEnd(event) {
+//     event.preventDefault();
+//     if (!touchElement) return;
+    
+//     const dropTarget = document.elementFromPoint(event.changedTouches[0].clientX, event.changedTouches[0].clientY);
+//     if (dropTarget.classList.contains('droppable') && dropTarget.textContent.trim() === '') {
+//         dropTarget.textContent = touchElement.textContent;
+//         dropTarget.classList.add('filled');
+//         touchElement.remove();
+//         checkAllPlacesFilled();
+//     } else {
+//         touchElement.style.position = '';
+//         touchElement.style.left = '';
+//         touchElement.style.top = '';
+//     }
+    
+//     touchElement = null;
+// }
+
+// Touch functions
+function touchStart(event) {
+    event.preventDefault();
+    touchElement = event.target;
+    touchElement.style.position = 'absolute';
+    touchElement.style.zIndex = 1000; // Ensure it's above other elements
+}
+
+function touchMove(event) {
+    event.preventDefault();
+    const touch = event.touches[0];
+    
+    if (touchElement) {
+        touchElement.style.left = `${touch.pageX - touchElement.offsetWidth / 2}px`;
+        touchElement.style.top = `${touch.pageY - touchElement.offsetHeight / 2}px`;
+    }
+}
+
+function touchEnd(event) {
+    event.preventDefault();
+    if (!touchElement) return;
+    
+    const dropTarget = document.elementFromPoint(event.changedTouches[0].clientX, event.changedTouches[0].clientY);
+    if (dropTarget.classList.contains('droppable') && dropTarget.textContent.trim() === '') {
+        dropTarget.textContent = touchElement.textContent;
+        dropTarget.classList.add('filled');
+        touchElement.remove();
+        checkAllPlacesFilled();
+    } else {
+        touchElement.style.position = '';
+        touchElement.style.left = '';
+        touchElement.style.top = '';
+    }
+    
+    touchElement = null;
+}

@@ -1,9 +1,9 @@
 // Global variables
 let questions = [];
 let currentQuestion = {};
-let timerDuration = 30; // Time in seconds
+let timerDuration = 60; // Time in seconds
 let timerInterval;
-let draggedData; // Variable to store data being dragged
+let touchElement = null; // Track the currently touched element
 
 // Function to load questions from XML file and start the game with a random question
 function loadQuestionsFromXML(filePath) {
@@ -98,8 +98,6 @@ function displayDroppablePlaces(length) {
         droppableElement.addEventListener('drop', drop);
 
         // Touch events for dropping
-        droppableElement.addEventListener('touchstart', touchStart);
-        droppableElement.addEventListener('touchmove', touchMove);
         droppableElement.addEventListener('touchend', touchEnd);
 
         droppableWordContainer.appendChild(droppableElement);
@@ -121,7 +119,7 @@ function startTimer(duration) {
     }, 1000);
 }
 
-// Drag and drop functions for both mouse and touch events
+// Drag and drop functions
 function dragStart(event) {
     event.dataTransfer.setData('text', event.target.textContent);
 }
@@ -153,42 +151,41 @@ function drop(event) {
     checkAllPlacesFilled();
 }
 
-// Touch events for dragging
+// Touch functions
 function touchStart(event) {
     event.preventDefault();
-    draggedData = event.target.textContent; // Store data being dragged
-    event.target.style.opacity = '0.4'; // Adjust opacity or style for touch feedback
+    touchElement = event.target;
+    touchElement.style.position = 'absolute';
+    touchElement.style.zIndex = 1000; // Ensure it's above other elements
 }
 
 function touchMove(event) {
     event.preventDefault();
     const touch = event.touches[0];
-    const draggedElement = document.elementFromPoint(touch.clientX, touch.clientY);
-    if (draggedElement && draggedElement.classList.contains('draggable')) {
-        draggedElement.style.left = touch.clientX - (draggedElement.offsetWidth / 2) + 'px';
-        draggedElement.style.top = touch.clientY - (draggedElement.offsetHeight / 2) + 'px';
+    
+    if (touchElement) {
+        touchElement.style.left = `${touch.pageX - touchElement.offsetWidth / 2}px`;
+        touchElement.style.top = `${touch.pageY - touchElement.offsetHeight / 2}px`;
     }
 }
 
 function touchEnd(event) {
     event.preventDefault();
-    event.target.style.opacity = ''; // Reset opacity after touch action
-    const touchedElement = document.elementFromPoint(event.changedTouches[0].clientX, event.changedTouches[0].clientY);
-    if (touchedElement && touchedElement.classList.contains('droppable')) {
-        touchedElement.textContent = draggedData; // Use stored data
-        touchedElement.classList.add('filled');
-
-        // Remove the corresponding jumbled letter
-        const jumbledLetters = document.querySelectorAll('.draggable');
-        for (let letter of jumbledLetters) {
-            if (letter.textContent === draggedData) {
-                letter.remove();
-                break;
-            }
-        }
-
+    if (!touchElement) return;
+    
+    const dropTarget = document.elementFromPoint(event.changedTouches[0].clientX, event.changedTouches[0].clientY);
+    if (dropTarget.classList.contains('droppable') && dropTarget.textContent.trim() === '') {
+        dropTarget.textContent = touchElement.textContent;
+        dropTarget.classList.add('filled');
+        touchElement.remove();
         checkAllPlacesFilled();
+    } else {
+        touchElement.style.position = '';
+        touchElement.style.left = '';
+        touchElement.style.top = '';
     }
+    
+    touchElement = null;
 }
 
 // Function to check if all places are filled
