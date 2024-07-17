@@ -1,14 +1,87 @@
 <questions>
-    <question>
+    <!-- <question>
         <text>What is the capital of Bangladesh?</text>
-        <answer>CHITTAGONG</answer>
+        <answer>DHAKA</answer>
     </question>
     <question>
-        <text>What is the capital of Bangladesh?</text>
-        <answer>CHITTAGONG</answer>
+        <text>What is the largest planet in our solar system?</text>
+        <answer>JUPITER</answer>
     </question>
-        <question>
-        <text>What is the capital of Bangladesh?</text>
-        <answer>CHITTAGONG</answer>
+    <question>
+        <text>Who wrote "To Kill a Mockingbird"?</text>
+        <answer>HARPERLEE</answer>
+    </question>
+    <question>
+        <text>What is the chemical symbol for gold?</text>
+        <answer>AU</answer>
+    </question>
+    <question>
+        <text>In what year did the Titanic sink?</text>
+        <answer>1912</answer>
+    </question>
+    <question>
+        <text>What is the smallest country in the world?</text>
+        <answer>VATICANCITY</answer>
+    </question>
+    <question>
+        <text>What is the capital of France?</text>
+        <answer>PARIS</answer>
+    </question>
+    <question>
+        <text>Who is known as the "Father of Computers"?</text>
+        <answer>CHARLESBABBAGE</answer>
+    </question>
+    <question>
+        <text>What is the hardest natural substance on Earth?</text>
+        <answer>DIAMOND</answer>
+    </question>
+    <question>
+        <text>Who discovered penicillin?</text>
+        <answer>ALEXANDERFLEMING</answer>
+    </question>
+    <question>
+        <text>What is the tallest mountain in the world?</text>
+        <answer>EVEREST</answer>
+    </question>
+    <question>
+        <text>Which planet is known as the Red Planet?</text>
+        <answer>MARS</answer>
+    </question>
+    <question>
+        <text>What is the capital of Japan?</text>
+        <answer>TOKYO</answer>
+    </question>
+    <question>
+        <text>Who wrote "1984"?</text>
+        <answer>GEORGEORWELL</answer>
+    </question>
+    <question>
+        <text>What is the currency of the United Kingdom?</text>
+        <answer>POUND</answer>
+    </question>
+    <question>
+        <text>What is the longest river in the world?</text>
+        <answer>NILE</answer>
+    </question>
+    <question>
+        <text>What is the main ingredient in guacamole?</text>
+        <answer>AVOCADO</answer>
+    </question>
+    <question>
+        <text>Who developed the theory of relativity?</text>
+        <answer>ALBERT EINSTEIN</answer>
+    </question>
+    <question>
+        <text>What is the largest ocean on Earth?</text>
+        <answer>PACIFIC</answer>
+    </question>-->
+    <!-- <question>
+        <text>What is the fastest land animal?</text>
+        <answer>CHEETAH</answer>
+    </question>  -->
+
+    <question>
+        <text>Who painted the Mona Lisa?</text>
+        <answer>LEONARDODAVINCIllasd</answer>
     </question>
 </questions>

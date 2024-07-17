@@ -1,10 +1,7 @@
 html, body {
-    display: flex;
     height: 100%;
-    width: 100%;
     margin: 0;
     padding: 0;
-    overflow: hidden; /* Prevent scrolling */
     background-image: url('../background/guest-data-Photoroom.png'); /* Replace with your image path */
     background-size: cover; /* Ensures the image covers the whole page */
     background-position: center; /* Centers the image */
@@ -15,16 +12,24 @@ html, body {
     display: flex;
     justify-content: center; /* Center content horizontally */
     align-items: center; /* Center content vertically */
+    height: 100%; /* Full height of viewport */
+    max-width: 100%; /* Limit maximum width to viewport width */
+    overflow: hidden; /* Hide overflow content */
     padding: 20px; /* Adjust padding as needed */
     box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+}
+
+#game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%; /* Limit maximum width to viewport width */
 }
 
 .droppable-word {
     background-color: white;
     margin-top: 10px;
     margin-bottom: 10px;
-    height: auto;
-    width: auto; /* Adjust width as needed */
     border: 5px dashed #350217ab;
     display: flex;
     align-items: center;
@@ -38,7 +43,6 @@ html, body {
 }
 
 #question {
-    position: relative;
     font-size: 40px;
     font-weight: bolder;
     color: white;
@@ -48,7 +52,7 @@ html, body {
     position: fixed; /* Change from absolute to fixed */
     top: 20px;
     left: 20px;
-    background-color: rgba(75,99,171,255);
+    background-color: rgba(75, 99, 171, 255);
     color: white;
     padding: 20px;
     border-radius: 50%; /* Use a circular border */
@@ -70,10 +74,10 @@ html, body {
     border: 5px solid #350217ab;
     border-radius: 20%;
     padding: 10px; /* Reduced padding */
-    margin: 20px;
+    margin: 10px;
     min-width: 100px;
     min-height: 100px;
-    background-color: rgba(75,99,171,255);
+    background-color: rgba(75, 99, 171, 255);
     color: white; /* Font color */
     font-family: 'Arial', sans-serif; /* Font style */
     font-size: 40px;
@@ -84,8 +88,9 @@ html, body {
 
 .droppable {
     border: 4px dashed #007bff;
+    border-radius: 20%;
     padding: 20px;
-    margin: 40px;
+    margin: 10px;
     min-width: 100px;
     min-height: 100px;
     display: flex;

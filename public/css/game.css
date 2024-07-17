@@ -20,11 +20,9 @@ html, body {
 }
 
 .droppable-word {
-    background-color: white;
+    background-color: bisque;
     margin-top: 10px;
     margin-bottom: 10px;
-    height: auto;
-    width: auto; /* Adjust width as needed */
     border: 5px dashed #350217ab;
     display: flex;
     align-items: center;
@@ -46,8 +44,8 @@ html, body {
 
 #timer {
     position: fixed; /* Change from absolute to fixed */
-    top: 20px;
-    left: 20px;
+    top: 50px;
+    left: 30px;
     background-color: rgba(75,99,171,255);
     color: white;
     padding: 20px;
@@ -70,10 +68,10 @@ html, body {
     border: 5px solid #350217ab;
     border-radius: 20%;
     padding: 10px; /* Reduced padding */
-    margin: 20px;
+    margin: 10px;
     min-width: 100px;
     min-height: 100px;
-    background-color: rgba(75,99,171,255);
+    background-color: rgba(75, 99, 171, 255);
     color: white; /* Font color */
     font-family: 'Arial', sans-serif; /* Font style */
     font-size: 40px;
@@ -84,8 +82,9 @@ html, body {
 
 .droppable {
     border: 4px dashed #007bff;
+    border-radius: 20%;
     padding: 20px;
-    margin: 40px;
+    margin: 10px;
     min-width: 100px;
     min-height: 100px;
     display: flex;

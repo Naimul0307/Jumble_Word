@@ -1,8 +1,11 @@
 // Global variables
 let questions = [];
 let currentQuestion = {};
-let timerDuration = 30; // Time in seconds
+let timerDuration = 600; // Time in seconds
 let timerInterval;
+
+// Maximum number of .letter-box and .droppable elements to show
+const maxElements = 15;
 
 // Function to load questions from XML file and start the game with a random question
 function loadQuestionsFromXML(filePath) {
@@ -66,10 +69,11 @@ function displayJumbledLetters(jumbledAnswer) {
     const jumbledLettersContainer = document.getElementById('jumbled-letters');
     jumbledLettersContainer.innerHTML = ''; // Clear previous content
 
-    for (let letter of jumbledAnswer) {
+    // Only show up to maxElements number of letters
+    for (let i = 0; i < Math.min(jumbledAnswer.length, maxElements); i++) {
         const draggableElement = document.createElement('div');
         draggableElement.className = 'draggable letter-box'; // Apply the letter-box class
-        draggableElement.textContent = letter;
+        draggableElement.textContent = jumbledAnswer[i];
         draggableElement.draggable = true;
         draggableElement.addEventListener('dragstart', dragStart);
 
@@ -86,7 +90,7 @@ function displayJumbledLetters(jumbledAnswer) {
 function displayDroppablePlaces(length) {
     const droppableWordContainer = document.getElementById('droppable-word');
     droppableWordContainer.innerHTML = '';
-    for (let i = 0; i < length; i++) {
+    for (let i = 0; i < Math.min(length, maxElements); i++) {
         const droppableElement = document.createElement('div');
         droppableElement.className = 'droppable';
         droppableElement.addEventListener('dragover', dragOver);
