@@ -3,7 +3,6 @@ let questions = [];
 let currentQuestion = {};
 let timerDuration = 30; // Time in seconds
 let timerInterval;
-let draggedData; // Variable to store data being dragged
 
 // Function to load questions from XML file and start the game with a random question
 function loadQuestionsFromXML(filePath) {
@@ -72,11 +71,9 @@ function displayJumbledLetters(jumbledAnswer) {
         draggableElement.className = 'draggable letter-box'; // Apply the letter-box class
         draggableElement.textContent = letter;
         draggableElement.draggable = true;
-
-        // Mouse events for dragging
         draggableElement.addEventListener('dragstart', dragStart);
 
-        // Touch events for dragging
+        // Touch event listeners
         draggableElement.addEventListener('touchstart', touchStart);
         draggableElement.addEventListener('touchmove', touchMove);
         draggableElement.addEventListener('touchend', touchEnd);
@@ -92,15 +89,12 @@ function displayDroppablePlaces(length) {
     for (let i = 0; i < length; i++) {
         const droppableElement = document.createElement('div');
         droppableElement.className = 'droppable';
-
-        // Mouse events for dropping
         droppableElement.addEventListener('dragover', dragOver);
         droppableElement.addEventListener('drop', drop);
-
-        // Touch events for dropping
-        droppableElement.addEventListener('touchstart', touchStart);
-        droppableElement.addEventListener('touchmove', touchMove);
-        droppableElement.addEventListener('touchend', touchEnd);
+        
+        // Touch event listeners
+        droppableElement.addEventListener('touchstart', touchOver);
+        droppableElement.addEventListener('touchend', touchDrop);
 
         droppableWordContainer.appendChild(droppableElement);
     }
@@ -121,7 +115,7 @@ function startTimer(duration) {
     }, 1000);
 }
 
-// Drag and drop functions for both mouse and touch events
+// Drag and drop functions
 function dragStart(event) {
     event.dataTransfer.setData('text', event.target.textContent);
 }
@@ -134,10 +128,12 @@ function drop(event) {
     event.preventDefault();
     const data = event.dataTransfer.getData('text');
     
-    // Clear the droppable element before adding the new content
-    event.target.textContent = '';
-
-    // Add the dragged content
+    // Check if the droppable area already contains a letter
+    if (event.target.textContent.trim() !== '') {
+        return; // If it contains a letter, do nothing
+    }
+    
+    // Clear the droppable element
     event.target.textContent = data;
     event.target.classList.add('filled');
     
@@ -153,40 +149,41 @@ function drop(event) {
     checkAllPlacesFilled();
 }
 
-// Touch events for dragging
+// Function to handle touch start
 function touchStart(event) {
     event.preventDefault();
-    draggedData = event.target.textContent; // Store data being dragged
-    event.target.style.opacity = '0.4'; // Adjust opacity or style for touch feedback
+    const touch = event.touches[0];
+    const draggableElement = event.target;
+    draggableElement.style.position = 'absolute';
+    draggableElement.style.zIndex = 1000;
+    draggableElement.style.left = `${touch.pageX - draggableElement.offsetWidth / 2}px`;
+    draggableElement.style.top = `${touch.pageY - draggableElement.offsetHeight / 2}px`;
 }
 
+// Function to handle touch move
 function touchMove(event) {
     event.preventDefault();
     const touch = event.touches[0];
-    const draggedElement = document.elementFromPoint(touch.clientX, touch.clientY);
-    if (draggedElement && draggedElement.classList.contains('draggable')) {
-        draggedElement.style.left = touch.clientX - (draggedElement.offsetWidth / 2) + 'px';
-        draggedElement.style.top = touch.clientY - (draggedElement.offsetHeight / 2) + 'px';
-    }
+    const draggableElement = event.target;
+    draggableElement.style.left = `${touch.pageX - draggableElement.offsetWidth / 2}px`;
+    draggableElement.style.top = `${touch.pageY - draggableElement.offsetHeight / 2}px`;
 }
 
+// Function to handle touch end
 function touchEnd(event) {
     event.preventDefault();
-    event.target.style.opacity = ''; // Reset opacity after touch action
-    const touchedElement = document.elementFromPoint(event.changedTouches[0].clientX, event.changedTouches[0].clientY);
-    if (touchedElement && touchedElement.classList.contains('droppable')) {
-        touchedElement.textContent = draggedData; // Use stored data
-        touchedElement.classList.add('filled');
-
-        // Remove the corresponding jumbled letter
-        const jumbledLetters = document.querySelectorAll('.draggable');
-        for (let letter of jumbledLetters) {
-            if (letter.textContent === draggedData) {
-                letter.remove();
-                break;
-            }
+    const draggableElement = event.target;
+    draggableElement.style.position = 'static';
+    const dropTarget = document.elementFromPoint(event.changedTouches[0].clientX, event.changedTouches[0].clientY);
+    if (dropTarget && dropTarget.classList.contains('droppable')) {
+        const data = draggableElement.textContent;
+        // Check if the droppable area already contains a letter
+        if (dropTarget.textContent.trim() !== '') {
+            return; // If it contains a letter, do nothing
         }
-
+        dropTarget.textContent = data;
+        dropTarget.classList.add('filled');
+        draggableElement.remove();
         checkAllPlacesFilled();
     }
 }
@@ -232,3 +229,12 @@ function endGame() {
 
 // Load questions from XML and start the game with a random question
 loadQuestionsFromXML('xml/questions.xml');
+
+// Additional touch event handlers
+function touchOver(event) {
+    event.preventDefault();
+}
+
+function touchDrop(event) {
+    event.preventDefault();
+}
