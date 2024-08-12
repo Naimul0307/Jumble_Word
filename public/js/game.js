@@ -64,7 +64,6 @@ function displayQuestion(question) {
     questionContainer.textContent = question;
 }
 
-// Function to display jumbled answer letters as draggable items
 function displayJumbledLetters(jumbledAnswer) {
     const jumbledLettersContainer = document.getElementById('jumbled-letters');
     jumbledLettersContainer.innerHTML = ''; // Clear previous content
@@ -85,6 +84,7 @@ function displayJumbledLetters(jumbledAnswer) {
         jumbledLettersContainer.appendChild(draggableElement);
     }
 }
+
 
 // Function to display droppable places for answer letters
 function displayDroppablePlaces(length) {
@@ -165,7 +165,6 @@ function drop(event) {
     checkAllPlacesFilled();
 }
 
-
 // Function to handle touch start
 function touchStart(event) {
     event.preventDefault();
@@ -175,6 +174,10 @@ function touchStart(event) {
     draggableElement.style.zIndex = 1000;
     draggableElement.style.left = `${touch.pageX - draggableElement.offsetWidth / 2}px`;
     draggableElement.style.top = `${touch.pageY - draggableElement.offsetHeight / 2}px`;
+
+    // Store the original position of the draggable element
+    draggableElement.dataset.originalLeft = draggableElement.style.left;
+    draggableElement.dataset.originalTop = draggableElement.style.top;
 }
 
 // Function to handle touch move
@@ -191,17 +194,40 @@ function touchEnd(event) {
     event.preventDefault();
     const draggableElement = event.target;
     draggableElement.style.position = 'static';
+    
     const dropTarget = document.elementFromPoint(event.changedTouches[0].clientX, event.changedTouches[0].clientY);
     if (dropTarget && dropTarget.classList.contains('droppable')) {
         const data = draggableElement.textContent;
+        
         // Check if the droppable area already contains a letter
         if (dropTarget.textContent.trim() !== '') {
-            return; // If it contains a letter, do nothing
+            // Move the existing letter back to jumbled letters container
+            const letterToMoveBack = document.createElement('div');
+            letterToMoveBack.className = 'draggable letter-box';
+            letterToMoveBack.textContent = dropTarget.textContent;
+            letterToMoveBack.draggable = true;
+            letterToMoveBack.addEventListener('dragstart', dragStart);
+            
+            // Add touch event listeners
+            letterToMoveBack.addEventListener('touchstart', touchStart);
+            letterToMoveBack.addEventListener('touchmove', touchMove);
+            letterToMoveBack.addEventListener('touchend', touchEnd);
+            
+            document.getElementById('jumbled-letters').appendChild(letterToMoveBack);
+            
+            dropTarget.textContent = '';
+            dropTarget.classList.remove('filled');
         }
+        
+        // Place the letter in the droppable area
         dropTarget.textContent = data;
         dropTarget.classList.add('filled');
         draggableElement.remove();
         checkAllPlacesFilled();
+    } else {
+        // If not dropped on a valid target, return to the original position
+        draggableElement.style.left = draggableElement.dataset.originalLeft;
+        draggableElement.style.top = draggableElement.dataset.originalTop;
     }
 }
 

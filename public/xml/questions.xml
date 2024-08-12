@@ -1,5 +1,5 @@
 <questions>
-    <!-- <question>
+    <question>
         <text>What is the capital of Bangladesh?</text>
         <answer>DHAKA</answer>
     </question>
@@ -74,14 +74,13 @@
     <question>
         <text>What is the largest ocean on Earth?</text>
         <answer>PACIFIC</answer>
-    </question>-->
-    <!-- <question>
+    </question>
+    <question>
         <text>What is the fastest land animal?</text>
         <answer>CHEETAH</answer>
-    </question>  -->
-
+    </question>
     <question>
         <text>Who painted the Mona Lisa?</text>
-        <answer>LEONARDODAVINCIllASD</answer>
+        <answer>LEONARDODAVINCI</answer>
     </question>
 </questions>
