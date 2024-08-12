@@ -19,6 +19,16 @@ html, body {
     box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
 }
 
+#jumbled-letters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px; /* Add space between jumbled letters and droppable word */
+    padding: 10px; /* Optional: add padding around the jumbled letters */
+    border-radius: 10px; /* Optional: add border radius for rounded corners */
+}
+
 .droppable-word {
     background-color: bisque;
     margin-top: 10px;
@@ -39,8 +49,10 @@ html, body {
     position: relative;
     font-size: 40px;
     font-weight: bolder;
+    align-items: center;
+    justify-content: center;
     color: rgb(230, 240, 236);
-    background: linear-gradient(to right, #8be251, #feb47b); /* Gradient from pink to orange */
+    background: linear-gradient(to right, #65b82e, #d38346); /* Gradient from pink to orange */
 }
 
 
