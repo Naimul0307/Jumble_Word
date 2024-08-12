@@ -39,8 +39,10 @@ html, body {
     position: relative;
     font-size: 40px;
     font-weight: bolder;
-    color: white;
+    color: rgb(230, 240, 236);
+    background: linear-gradient(to right, #8be251, #feb47b); /* Gradient from pink to orange */
 }
+
 
 #timer {
     position: fixed; /* Change from absolute to fixed */

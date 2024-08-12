@@ -131,27 +131,40 @@ function dragOver(event) {
 function drop(event) {
     event.preventDefault();
     const data = event.dataTransfer.getData('text');
-    
+    const target = event.target;
+
     // Check if the droppable area already contains a letter
-    if (event.target.textContent.trim() !== '') {
-        return; // If it contains a letter, do nothing
-    }
-    
-    // Clear the droppable element
-    event.target.textContent = data;
-    event.target.classList.add('filled');
-    
-    // Remove the corresponding jumbled letter
-    const jumbledLetters = document.querySelectorAll('.draggable');
-    for (let letter of jumbledLetters) {
-        if (letter.textContent === data) {
-            letter.remove();
-            break;
+    if (target.textContent.trim() !== '') {
+        // If it contains a letter, swap it with the dragged letter
+        const existingLetter = target.textContent.trim();
+        target.textContent = data;
+
+        // Find the corresponding draggable letter element and restore it
+        const jumbledLetters = document.querySelectorAll('.draggable');
+        for (let letter of jumbledLetters) {
+            if (letter.textContent === data) {
+                letter.textContent = existingLetter;
+                break;
+            }
+        }
+    } else {
+        // If it does not contain a letter, place the dragged letter
+        target.textContent = data;
+        target.classList.add('filled');
+        
+        // Remove the corresponding jumbled letter
+        const jumbledLetters = document.querySelectorAll('.draggable');
+        for (let letter of jumbledLetters) {
+            if (letter.textContent === data) {
+                letter.remove();
+                break;
+            }
         }
     }
     
     checkAllPlacesFilled();
 }
+
 
 // Function to handle touch start
 function touchStart(event) {
